@@ -24,15 +24,15 @@ type numberLookupResponse struct {
 
 // numberLookupHandler accepts only GET requests
 // this handler accepts two arguments:
-// - phoneNumberField: sequence of digits in the format [+][country code][area code][local phone number], the '+' is optional
-// phones can have one white space between country code, area code and local phone number,
+// - phoneNumberField: sequence of digits in the format [+][country code][area code][local phone number], the '+' is optional.
+// Phones can have one white space between country code and area code, and one white space between area code and local phone number,
 // any other white space is invalid
-// if the phone number is missing the country code then the caller must provide user must provide the countryCodeField.
+// The user must provide the countryCodeField if the phone number is missing the country code.
 // - countryCodeField: Country code in ISO 3166-1 alpha-2 format.
 //
 // Return codes:
 // - 200: It received valid phoneNumberField and countryCodeField and was able to find expected information.
-// - 400: It received an missing or invalid phone number, or an invalid combination of phone number + country code
+// - 400: It received a missing or invalid phone number, or an invalid combination of phone number + country code
 // - 405: It received a method other than GET request
 //
 // Examples:
@@ -102,6 +102,7 @@ func numberLookupHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != http.MethodGet {
 		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.Header().Set("Allow", "GET")
 		return
 	}
 
