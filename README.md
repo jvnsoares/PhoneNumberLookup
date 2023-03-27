@@ -31,15 +31,15 @@ The service has only endpoint `/v1/phone-numbers` that accepts GET requests. It 
 You can build a docker image of `PhoneNumberLookup` using the following command:
 
 ```shell
-docker build -f build/docker/Dockerfile -t phone-number-lookup:local .
+docker build -f build/docker/Dockerfile -t phone-number-lookup:latest .
 ```
 
-It will create a docker imaged called `phone-number-lookup` tagged `local` in your local machine.
+It will create a docker imaged called `phone-number-lookup` tagged `latest` in your local machine.
 
-Alternatively you can fetch the latest build of `PhoneNumberLookup` from dockerhub using the command
+Alternatively you can pull the latest build of `PhoneNumberLookup` from dockerhub using the command:
 
 ```shell
-  <PLACE HOLDER>
+docker pull jvnsoares/phone-number-lookup
 ```
 
 ### Running
@@ -47,7 +47,7 @@ Alternatively you can fetch the latest build of `PhoneNumberLookup` from dockerh
 You can start the `PhoneNumberLookup` service from using the command:
 
 ```shell
- docker run -p 8008:8008 <PLACE HOLDER>
+ docker run -p 8008:8008 jvnsoares/phone-number-lookup:latest
 ```
 
 ### Deployment

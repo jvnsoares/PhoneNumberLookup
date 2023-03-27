@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./build/docker/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/phonenumberlookup:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/phone-number-lookup:latest
